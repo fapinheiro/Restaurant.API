@@ -10,15 +10,15 @@ namespace Restaurant.API.Models
     public class OrderMaster
     {
         [Key]
-        public long OrderMasterId { get; set; }
+        public int OrderMasterId { get; set; }
 
-        [Column(TypeName = "nvarchar(75)")]
+        [Column(TypeName = "varchar(75)")]
         public string OrderNumber { get; set; }
 
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
-        [Column(TypeName = "nvarchar(10)")]
+        [Column(TypeName = "varchar(10)")]
         public string PMethod { get; set; }
 
         public decimal GTotal { get; set; }

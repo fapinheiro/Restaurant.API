@@ -24,7 +24,7 @@ namespace Restaurant.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderMaster>> GetOrderMaster(long id) {
+        public async Task<ActionResult<OrderMaster>> GetOrderMaster(int id) {
             var orderMaster = await _context.OrderMasters.FindAsync(id);
 
             if (orderMaster == null)
@@ -42,7 +42,19 @@ namespace Restaurant.API.Controllers
             return CreatedAtAction("GetOrderMaster", new { id = OrderMaster.OrderMasterId}, OrderMaster);
         }
 
-       
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteOrderMaster(int id) {
+            var orderMaster = await _context.OrderMasters.FindAsync(id);
+            if (orderMaster == null)
+            {
+                return NotFound();
+            }
+
+            _context.OrderMasters.Remove(orderMaster);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
 
     }
