@@ -27,6 +27,9 @@ namespace Restaurant.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             // Definition to use cors
+            services.AddCors();
+
             services.AddControllers();
 
             // db context injection
@@ -47,6 +50,9 @@ namespace Restaurant.API
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Enable cors origins 
+            app.UseCors( o => o.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 
