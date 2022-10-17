@@ -24,5 +24,8 @@ namespace Restaurant.API.Models
         public decimal GTotal { get; set; }
 
         public List<OrderDetail> OrderDetails { get; set; }
+
+        [NotMapped]
+        public String DeletedOrderItemIds { get; set; }
     }
 }
